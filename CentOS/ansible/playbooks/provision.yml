@@ -1,3 +1,11 @@
 - hosts: all
   tasks:
-    - command: echo "Ansible installed"
+    - yum: name=git state=installed
+
+    - easy_install: name=pip state=present
+
+    - pip: name={{ item }}
+      with_items:
+        - "awscli"
+        - "boto"
+        - "boto3"
