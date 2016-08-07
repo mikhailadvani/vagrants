@@ -1,11 +1,13 @@
 - hosts: all
   tasks:
-    - yum: name=git state=installed
+    - yum: name={{item}} state=installed
+      with_items:
+      - git
 
     - easy_install: name=pip state=present
 
     - pip: name={{ item }}
       with_items:
-        - "awscli"
-        - "boto"
-        - "boto3"
+      - "awscli"
+      - "boto"
+      - "boto3"
