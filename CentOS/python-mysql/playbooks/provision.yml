@@ -1,0 +1,14 @@
+- hosts: all
+  tasks:
+    - yum: name={{item}} state=installed
+      with_items:
+      - "git"
+      - "MySQL-python"
+
+    - easy_install: name=pip state=present
+
+    - pip: name={{ item }}
+      with_items:
+      - "peewee"
+
+    - git: repo=https://github.com/mikhailadvani/serverless.git dest=/opt
