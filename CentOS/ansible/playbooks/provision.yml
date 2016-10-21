@@ -1,7 +1,5 @@
 - hosts: all
   tasks:
-    - get_url:
-        url: http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-1.10.1-1.el6.ngx.x86_64.rpm
-        dest: /tmp/nginx.rpm
+    - yum: name=http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-1.10.1-1.el6.ngx.x86_64.rpm state=present
 
-    - command: rpm -i /tmp/nginx.rpm
+    - file: path=/etc/nginx/conf.d/default.conf state=absent
