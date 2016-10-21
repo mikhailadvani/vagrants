@@ -1,13 +1,7 @@
 - hosts: all
   tasks:
-    - yum: name={{item}} state=installed
-      with_items:
-      - git
+    - get_url:
+        url: http://nginx.org/packages/centos/6/x86_64/RPMS/nginx-1.10.1-1.el6.ngx.x86_64.rpm
+        dest: /tmp/nginx.rpm
 
-    - easy_install: name=pip state=present
-
-    - pip: name={{ item }}
-      with_items:
-      - "awscli"
-      - "boto"
-      - "boto3"
+    - command: rpm -i /tmp/nginx.rpm
