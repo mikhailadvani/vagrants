@@ -14,16 +14,19 @@
       - "readline-devel"
       - "tk-devel"
 
-    - get_url: url="https://www.python.org/ftp/python/2.7.6/Python-2.7.6.tar.xz" validate_certs=no dest=/tmp
+    - set_fact:
+        python_version: 2.7.12
 
-    - command: tar xf Python-2.7.6.tar.xz
+    - get_url: url="https://www.python.org/ftp/python/{{python_version}}/Python-{{python_version}}.tar.xz" validate_certs=no dest=/tmp
+
+    - command: tar xf Python-{{python_version}}.tar.xz
       args:
         chdir: /tmp
-        creates: /tmp/Python-2.7.6
+        creates: /tmp/Python-{{python_version}}
 
     - shell: ./configure --prefix=/usr/local && /usr/bin/make && /usr/bin/make altinstall
       args:
-        chdir: /tmp/Python-2.7.6
+        chdir: /tmp/Python-{{python_version}}
         creates: /usr/local/bin/python2.7
 
     - easy_install: name=pip state=present
@@ -33,3 +36,5 @@
       - "awscli"
       - "boto"
       - "boto3"
+
+    - service: name=ntpd state=started
