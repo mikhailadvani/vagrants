@@ -1,3 +1,3 @@
 - hosts: all
-  tasks:
-    - zypper: name=npm state=present
+  roles:
+    - {role: setup_node_projects}

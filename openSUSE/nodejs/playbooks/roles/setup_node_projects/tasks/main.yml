@@ -1,0 +1,5 @@
+---
+# tasks file for setup_node_projects
+
+- name: Install npm
+  zypper: name=npm state=present
