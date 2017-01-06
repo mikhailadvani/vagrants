@@ -2,7 +2,10 @@
 # tasks file for setup_node_projects
 
 - name: Install npm
-  zypper: name=npm state=present
+  zypper: name="{{item}}" state=present
+  with_items:
+    - npm
+    - java-1_8_0-openjdk
 
 - name: Checkout git repos
   include: checkout_git_repos.yml
