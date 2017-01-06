@@ -1,0 +1,8 @@
+- name: Include git repos to be setup
+  include_vars: "git_repos.yml"
+
+- name: Checkout repo
+  git:
+    repo: "{{item.git_url}}"
+    dest: "{{item.guest_dest_folder}}"
+  with_items: "{{repos}}"

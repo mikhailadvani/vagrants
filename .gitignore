@@ -3,3 +3,4 @@
 *.box
 *.retry
 .DS_Store
+openSUSE/nodejs/playbooks/roles/setup_node_projects/vars/git_repos.yml

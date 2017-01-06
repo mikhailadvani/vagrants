@@ -3,3 +3,6 @@
 
 - name: Install npm
   zypper: name=npm state=present
+
+- name: Checkout git repos
+  include: checkout_git_repos.yml
