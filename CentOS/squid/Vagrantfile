@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
   # config.vm.box_url = "http://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7.box"
   vagrant_folder = "/vagrant/playbooks"
   config.vm.synced_folder "../squid/playbooks", vagrant_folder, :nfs => true
+  config.vm.synced_folder "../../../", "/opt", :nfs => true
   config.vm.network :private_network, ip: "172.16.120.13"
 
   config.vm.provider "virtualbox" do |vb|
