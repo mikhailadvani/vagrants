@@ -6,3 +6,9 @@
     repo: "{{item.git_url}}"
     dest: "{{item.guest_dest_folder}}"
   with_items: "{{repos}}"
+
+- name: NPM Install
+  npm:
+    path: "{{item.guest_dest_folder}}"
+    state: latest
+  with_items: "{{repos}}"
